@@ -1,0 +1,45 @@
+{
+  "name": "scrivito-iubenda",
+  "version": "1.0.0",
+  "description": "Scrivito Widget for displaying contents of the iubenda.com Cookie Policy.",
+  "main": "build/index.js",
+  "scripts": {
+    "start": "webpack --watch",
+    "build": "webpack"
+  },
+  "peerDependencies": {
+    "react": ">=16.4.0",
+    "scrivito": ">=1.3.0",
+    "axios": "^0.19.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lbroermann/scrivito-iubenda.git"
+  },
+  "keywords": [
+    "scrivito",
+    "widget",
+    "iubenda",
+    "cookie",
+    "policy",
+    "privacy"
+  ],
+  "author": "lbroermann",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lbroermann/scrivito-iubenda/issues"
+  },
+  "homepage": "https://github.com/lbroermann/scrivito-iubenda#readme",
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.9.0",
+    "@babel/plugin-transform-react-jsx": "^7.9.4",
+    "@babel/preset-env": "^7.9.0",
+    "babel-loader": "^8.1.0",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
+  },
+  "dependencies": {
+    "axios": "^0.19.2"
+  }
+}
