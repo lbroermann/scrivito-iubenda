@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as Scrivito from 'scrivito';
 import axios from 'axios';
-import logo from 'logo.svg';
+import logo from "../logo.svg";
 
 Scrivito.provideWidgetClass('iubendaPrivacyWidget', {
     attributes: {
