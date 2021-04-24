@@ -8,9 +8,9 @@
     "build": "webpack"
   },
   "peerDependencies": {
+    "axios": "^0.21.1",
     "react": ">=16.4.0",
-    "scrivito": ">=1.3.0",
-    "axios": "^0.19.2"
+    "scrivito": ">=1.3.0"
   },
   "repository": {
     "type": "git",
@@ -40,6 +40,6 @@
     "webpack-cli": "^3.3.11"
   },
   "dependencies": {
-    "axios": "^0.19.2"
+    "axios": "^0.21.1"
   }
 }
