@@ -2,6 +2,20 @@ import * as React from 'react';
 import * as Scrivito from 'scrivito';
 import axios from 'axios';
 
+function isIubendaApiUrl(value) {
+    try {
+        const url = new URL(value);
+
+        return (
+            url.protocol === 'https:' &&
+            url.hostname === 'www.iubenda.com' &&
+            url.pathname.startsWith('/api/')
+        );
+    } catch (error) {
+        return false;
+    }
+}
+
 Scrivito.provideWidgetClass('iubendaPrivacyWidget', {
     attributes: {
       privacy: 'string',
@@ -11,7 +25,6 @@ Scrivito.provideWidgetClass('iubendaPrivacyWidget', {
 
 Scrivito.provideEditingConfig('iubendaPrivacyWidget', {
     title: 'iubenda Privacy Policy Widget',
-    //description: 'Displays iubenda Privacy policy',
   
     attributes: {
       privacy: {
@@ -37,11 +50,15 @@ class iubendaPrivacyWidget extends React.Component {
 
     componentDidMount() {
         const widget = this.props.widget;
-        if(widget.get("privacy") != "" && widget.get("privacy").includes("iubenda.com"))
+        if(isIubendaApiUrl(widget.get("privacy")))
         {
             axios.get(widget.get("privacy"))
             .then(response => {
-                this.setState({ privacyresponse: response.data.content });
+                if (typeof response.data.content === 'string') {
+                    this.setState({ privacyresponse: response.data.content });
+                } else {
+                    this.setState({ privacyresponse: 'The privacy policy API response is invalid' });
+                }
             })
             .catch(error => {
                 console.error(error);
@@ -52,11 +69,15 @@ class iubendaPrivacyWidget extends React.Component {
             this.setState({ privacyresponse: 'Please insert the privacy policy API url' })
         }
 
-        if(widget.get("cookie") != "" && widget.get("cookie").includes("iubenda.com"))
+        if(isIubendaApiUrl(widget.get("cookie")))
         {
             axios.get(widget.get("cookie"))
             .then(response => {
-                this.setState({ cookieresponse: response.data.content });
+                if (typeof response.data.content === 'string') {
+                    this.setState({ cookieresponse: response.data.content });
+                } else {
+                    this.setState({ cookieresponse: 'The cookie policy API response is invalid' });
+                }
             })
             .catch(error => {
                 console.error(error);
